@@ -1,0 +1,31 @@
+APLICACION CLIENTE SERVIDOR CON SOCKETS INET (TCP/IP)
+
+Estos programas implementan el servicio echo con IPv4:
+
+cltEchoTCP-V4.c - cliente echo con IPv4
+svrEchoTCP-V4.c - servidor secuencial echo con IPv4
+svrEchoTCP-V4-Conc.c - servidor CONCURRENTE echo con IPv4
+
+USO:
+./svrEchoTCP-v4 <numero-puerto>
+./svrEchoTCP-v4-Conc <numero-puerto>
+./cltEchoTCP-v4 <nombre-servidor> <numero-puerto> <mensaje>
+
+EJ:
+./svrEchoTCP-v4 20000
+./cltEchoTCP-v4 localhost 20000 "Mensaje del cliente"
+
+
+Estos programas implementan el servicio echo con IPv6:
+
+cltEchoTCP-V6.c  - cliente echo con IPv6
+svrEchoTCP-V6.c - servidor secuencial echo con IPv6
+
+USO:
+./svrEchoTCP-v6 <numero-puerto>
+./cltEchoTCP-v6 <nombre-servidor> <numero-puerto> <mensaje>
+
+EJ:
+./svrEchoTCP-v6 20000
+./cltEchoTCP-v6 ip6-localhost 20000 "Mensaje del cliente"
+

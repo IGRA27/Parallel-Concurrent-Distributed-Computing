@@ -1,0 +1,31 @@
+Actualizaciones perdidas
+------------------------
+1) El programa fileconc.c ilustra el problema de "actualizaciones perdidas" por la falta de control de concurrencia en el sistema de archivos de Linux. Dos procesos (padre e hijo) abren el mismo archivo para escribir un texto diferente. El archivo conservara solo uno de los textos, el otro se perdera. Cual de los dos textos, el del padre o el del hijo, es el que se pierde?
+
+Compilacion: cc -o fileconc fileconc.c
+Uso: ./fileconc <file-name> <texto-padre> <texto-hijo>
+Ejemplo: ./fileconc f1 Father Son
+
+2) El programa fileconc1.c realiza algo similar. El archivo contiene un numero entero (saldo de una cuenta). Los dos procesos que se generan (padre e hijo) abren el archivo, leen el saldo, incrementan el saldo con el monto respectivo y lo vuelven a grabar al archivo. Que sucede con el saldo que queda, finalmente, grabado en el archivo?
+
+Compilacion: cc -o fileconc1 fileconc1.c
+
+Uso: ./fileconc1 <file-name> <monto-padre> <monto-hijo>
+Ejemplo: ./fileconc1 f2 1000 2000
+
+Pueden utilizar el script saldo.bash para crear un archivo con el saldo inicial. Por ejemplo, el comando:
+
+./saldo.bash  f2 260
+crea el archivo f2 con el saldo inicial 260 (entero de 4 octetos).
+
+3) El programa fileconc2.c implementa control de concurrencia para evitar la perdida de actualizaciones de los saldos. Los dos procesos (padre e hijo) utilizan un "advisory lock" para coordinar el acceso al archivo. La compilacion y uso son similares a los de fileconc1.c.
+
+PREGUNTAS
+---------
+Que es un "advisory lock"?
+Que otros tipos de locks existen, a mas de los "advisory locks"?
+Es seguro el control de concurrencia implementado en fileconc2.c?
+Es eficiente el control de concurrencia implementado en fileconc2.c?
+Seria mejor (mas seguro, mas eficiente) utilizar semaforos?
+Seria mejor (mas seguro, mas eficiente) utilizar mutex?
+Como implementaria usted control de concurencia en el programa de marras?
